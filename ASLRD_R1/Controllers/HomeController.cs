@@ -59,7 +59,7 @@ namespace ASLRD_R1.Controllers
         [HttpGet]
         public ActionResult GetRestaurant2(string cityname)
         {
-            //cit.CountryID = (from a in db.adresse where a.restaurantID == citee.CountryCode select cnt).First<Country>().ID;
+            /*cit.CountryID = (from a in db.adresse where a.restaurantID == citee.CountryCode select cnt).First<Country>().ID;
             List<int> R = from s in db.adresse where s.ville == cityname select s.restaurantID ;
             var restaurant = from r in db.restaurant select r;
             var adresse = from s in db.adresse select s;
@@ -72,6 +72,8 @@ namespace ASLRD_R1.Controllers
             }
 
             return View("Restaurant", adresse.ToList());
+             */
+            return View();
         }
     }
 }
