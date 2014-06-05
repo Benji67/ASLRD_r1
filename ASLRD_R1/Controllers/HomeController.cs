@@ -44,36 +44,43 @@ namespace ASLRD_R1.Controllers
             return View();
         }
 
+        // liste les adresses
         [HttpGet]
         public ActionResult GetRestaurant(string cityname)
         {
-            var adresse = from s in db.adresse select s;
+            var adresse = from a in db.adresse select a;
             if (!string.IsNullOrEmpty(cityname))
-            {
-                adresse = adresse.Where(s => s.ville.ToUpper().Contains(cityname.ToUpper()));
+            {                
+                adresse = adresse.Where(a => a.ville.ToUpper().Contains(cityname.ToUpper()));
+                return View("Restaurant", adresse.ToList());                
             }
             
-            return View("Restaurant" , adresse.ToList());
+            else
+            {
+                return View("Adresse", adresse.ToList());
+            }
+            
         }
 
+        // liste les restaurants de la ville en parametre
         [HttpGet]
         public ActionResult GetRestaurant2(string cityname)
         {
-            /*cit.CountryID = (from a in db.adresse where a.restaurantID == citee.CountryCode select cnt).First<Country>().ID;
-            List<int> R = from s in db.adresse where s.ville == cityname select s.restaurantID ;
+            // Lazy loading
+            var adresse = from a in db.adresse select a;
             var restaurant = from r in db.restaurant select r;
-            var adresse = from s in db.adresse select s;
             if (!string.IsNullOrEmpty(cityname))
             {
                 adresse = adresse.Where(s => s.ville.ToUpper().Contains(cityname.ToUpper()));
-                //foreach(restaurant r in adresse)
-                //{
-                //}
+                foreach (adresse A in adresse.ToList())
+                {
+
+                }
             }
 
             return View("Restaurant", adresse.ToList());
-             */
-            return View();
+            
+            //return View();
         }
     }
 }
