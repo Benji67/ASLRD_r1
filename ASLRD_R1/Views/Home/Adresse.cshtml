@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Adresse";
+}
+
+<h2>Adresse</h2>
+
+<h2>Rechercher votre restaurant</h2>
+
+ @using (Html.BeginForm("GetRestaurant", "Home", FormMethod.Get, new { cityname = "ville"}))
+{
+    <p>
+        Find by name: @Html.TextBox("cityname")  
+        <input type="submit" value="Search" /></p>
+}
+

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ASLRD_R1.DataBaseAccess.adresse>
+@{
+    ViewBag.Title = "Restaurant";
+}
+
+<h2>Rechercher votre restaurant</h2>
+<h2>Liste des restaurants pour la ville de :</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ville)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codepostal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ville)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codepostal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.restaurant.restaurantID)
+            @Html.ActionLink("Details", "Details", new { id=item.adresseID })
+        </td>
+    </tr>
+}
+
+</table>
