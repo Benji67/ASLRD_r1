@@ -66,21 +66,19 @@ namespace ASLRD_R1.Controllers
         [HttpGet]
         public ActionResult GetRestaurant2(string cityname)
         {
-            // Lazy loading
             var adresse = from a in db.adresse select a;
-            var restaurant = from r in db.restaurant select r;
+            //var listerestaurant = new restaurant();
+            //var restaurant = from r in db.restaurant select r;            
             if (!string.IsNullOrEmpty(cityname))
             {
                 adresse = adresse.Where(s => s.ville.ToUpper().Contains(cityname.ToUpper()));
-                foreach (adresse A in adresse.ToList())
+                foreach (adresse A in adresse)
                 {
-
+                    var listerestaurant = from r in db.restaurant where r.restaurantID == A.restaurantID select r;
                 }
             }
 
-            return View("Restaurant", adresse.ToList());
-            
-            //return View();
+            return View("Restaurant", listerestaurant);
         }
     }
 }
