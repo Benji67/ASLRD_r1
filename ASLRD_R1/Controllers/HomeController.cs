@@ -44,41 +44,23 @@ namespace ASLRD_R1.Controllers
             return View();
         }
 
-        // liste les adresses
+        //liste des restaurants en fonction de la ville
         [HttpGet]
         public ActionResult GetRestaurant(string cityname)
-        {
-            var adresse = from a in db.adresse select a;
-            if (!string.IsNullOrEmpty(cityname))
-            {                
-                adresse = adresse.Where(a => a.ville.ToUpper().Contains(cityname.ToUpper()));
-                return View("Restaurant", adresse.ToList());                
-            }
-            
-            else
+        {         
+            var listerestaurant = (from r in db.restaurant
+                                       from a in db.adresse                                       
+                                       where a.restaurantID == r.restaurantID
+                                       where a.ville.ToUpper() == cityname.ToUpper()
+                                       select r);
+            if (listerestaurant == null)
             {
-                return View("Adresse", adresse.ToList());
+                return View("Adresse", null);
             }
-            
-        }
-
-        // liste les restaurants de la ville en parametre
-        [HttpGet]
-        public ActionResult GetRestaurant2(string cityname)
-        {
-            var adresse = from a in db.adresse select a;
-            //var listerestaurant = new restaurant();
-            //var restaurant = from r in db.restaurant select r;            
-            if (!string.IsNullOrEmpty(cityname))
+                else
             {
-                adresse = adresse.Where(s => s.ville.ToUpper().Contains(cityname.ToUpper()));
-                foreach (adresse A in adresse)
-                {
-                    var listerestaurant = from r in db.restaurant where r.restaurantID == A.restaurantID select r;
-                }
+                return View("Restaurant", listerestaurant);
             }
-
-            return View("Restaurant", listerestaurant);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ASLRD_R1.DataBaseAccess.adresse>
+﻿@model IEnumerable<ASLRD_R1.DataBaseAccess.restaurant>
 @{
     ViewBag.Title = "Restaurant";
 }
@@ -9,31 +9,25 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ville)
+            @Html.DisplayNameFor(model => model.nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rue)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.codepostal)
-        </th>
-        <th></th>
+            @Html.DisplayNameFor(model => model.genre)
+        </th> 
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ville)
+            @Html.DisplayFor(modelItem => item.nom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.rue)
+            @Html.DisplayFor(modelItem => item.genre)
         </td>
+       
         <td>
-            @Html.DisplayFor(modelItem => item.codepostal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.restaurant.restaurantID)
-            @Html.ActionLink("Details", "Details", new { id=item.adresseID })
+            @Html.DisplayFor(modelItem => item.restaurantID)
+            @*@Html.ActionLink("Details", "Details", new { id=item.adresseID })*@
         </td>
     </tr>
 }
