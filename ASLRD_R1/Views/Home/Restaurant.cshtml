@@ -3,33 +3,25 @@
     ViewBag.Title = "Restaurant";
 }
 
-<h2>Rechercher votre restaurant</h2>
 <h2>Liste des restaurants pour la ville de :</h2>
 
 <table>
-    <tr>
+    @*<tr>
         <th>
             @Html.DisplayNameFor(model => model.nom)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.genre)
-        </th> 
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genre)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.restaurantID)
-            @*@Html.ActionLink("Details", "Details", new { id=item.adresseID })*@
-        </td>
-    </tr>
-}
+    </tr>*@
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nom)
+            </td>
+            <td></td>        
+            <td>
+                @Html.ActionLink("La carte", "GetProduit", new { restaurantId = @item.restaurantID }, new { @class = "btn btn-default btn-lg" })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -242,6 +242,7 @@
     <Content Include="App_Data\DataBaseASLRD_log.ldf">
       <DependentUpon>DataBaseASLRD.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Site_ori.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -371,6 +372,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Adresse.cshtml" />
     <Content Include="Views\Home\Restaurant.cshtml" />
+    <Content Include="Views\Home\Restaurant2.cshtml" />
+    <Content Include="Views\Home\Produit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -14,7 +14,6 @@ namespace ASLRD_R1.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
             return View();
         }
 
@@ -33,34 +32,49 @@ namespace ASLRD_R1.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
         //liste des restaurants en fonction de la ville
         [HttpGet]
         public ActionResult GetRestaurant(string cityname)
-        {         
-            var listerestaurant = (from r in db.restaurant
+        {      
+            if ( string.IsNullOrEmpty(cityname))
+            {
+                ViewBag.Resut = "Erreur, entrer une ville";
+                return View("Adresse", null);
+            }
+            else
+            {
+                var listerestaurant = (from r in db.restaurant
                                        from a in db.adresse                                       
                                        where a.restaurantID == r.restaurantID
                                        where a.ville.ToUpper() == cityname.ToUpper()
                                        select r);
-            if (listerestaurant == null)
-            {
-                return View("Adresse", null);
+                if (listerestaurant == null)
+                {
+                    ViewBag.Resut = "Erreur, entrer une ville existante ou cette ville est non référencé";
+                   return View("Adresse", null);
+                }
+                    else
+                {
+                    return View("Restaurant", listerestaurant);
+                }
             }
-                else
-            {
-                return View("Restaurant", listerestaurant);
-            }
+        }
+
+        //liste des produit pour un restaurant
+        [HttpGet]
+        public ActionResult GetProduit()
+        {
+            ViewBag.Message = "Your contact page.";
+            return View();
         }
     }
 }

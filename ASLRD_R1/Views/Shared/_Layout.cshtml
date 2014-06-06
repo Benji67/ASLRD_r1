@@ -15,12 +15,10 @@
                 <div class="float-left">
                     <p class="site-title">@Html.ActionLink("votre logo ici", "Adresse", "Home")</p>
                 </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
+                <div class="float-right">                    
                     <nav>
                         <ul id="menu">
+                            <li>@Html.Partial("_LoginPartial")</li> 
                             <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>

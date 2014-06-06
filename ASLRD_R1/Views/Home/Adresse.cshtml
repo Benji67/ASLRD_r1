@@ -1,8 +1,6 @@
 ﻿@{
-    ViewBag.Title = "Adresse";
+    ViewBag.Title = "Rechercher";
 }
-
-<h2>Adresse</h2>
 
 <h2>Rechercher votre restaurant</h2>
 
@@ -10,6 +8,8 @@
 {
     <p>
         Find by name: @Html.TextBox("cityname")  
-        <input type="submit" value="Search" /></p>
+        <input type="submit" value="Search" />
+    </p>
+     <p class="message-error">@ViewBag.Resut</p>     
 }
 
