@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ASLRD_R1.DataBaseAccess.produit>
+@{
+    ViewBag.Title = "Produit";
+}
+
+<h2>@ViewBag.Title</h2>
+<h2>Liste des produits pour le restaurant xxx de la ville xxx</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prixproduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.delais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reduction)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prixproduit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.delais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reduction)
+        </td>       
+        <td>
+            @Html.ActionLink("Ajouter", "AjouterAuCadie", new { id=item.produitID })
+        </td>
+    </tr>
+}
+</table>
