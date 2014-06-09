@@ -115,20 +115,13 @@ footer {
 
 /* site title
 ----------------------------------------------------------*/
-.site-title {
-    color: #c8c8c8;
-    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
-    font-size: 2.3em;
-    margin: 0;
-}
-
-.site-title a, .site-title a:hover, .site-title a:active {
-    background: none;
-    color: #c8c8c8;
-    outline: none;
-    text-decoration: none;
-}
-
+.site-logo  {
+    background: url("../Images/logo.png") no-repeat top left;
+    display: block; 
+    width: 2.5em;
+    height: 2.5em;
+    text-indent: -9999px; 
+  } 
 
 /* login
 ----------------------------------------------------------*/
@@ -592,11 +585,14 @@ thead
         float: none;
     }
 
-    /* logo */
-    header .site-title {
-        margin: 10px;
-        text-align: center;
-    }
+    /* logo */   
+    header .site-logo  {
+    background: url("../Images/logo.png") no-repeat;
+    margin: 10px;
+    text-align: center;
+    text-indent: -9999px; 
+
+  } 
 
     /* login */
     #login {

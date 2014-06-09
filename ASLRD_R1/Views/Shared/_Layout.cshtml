@@ -13,7 +13,7 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("votre logo ici", "Adresse", "Home")</p>
+                    <p>@Html.ActionLink("logo", "Adresse", null, new { @class = "site-logo" })</p>
                 </div>
                 <div class="float-right">                    
                     <nav>
@@ -32,9 +32,11 @@
                 @RenderBody()
             </section>                       
         </div>
+        @*
         <div id="Commentsbody">
             @RenderPage("~/Views/Home/Commentaire.cshtml") 
         </div> 
+        *@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
